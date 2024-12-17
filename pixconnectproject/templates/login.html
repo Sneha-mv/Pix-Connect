@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Sign In</title>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
+</head>
+
+<body class="sub_page">
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container d-block">
+          <div class="main_nav_menu">
+            <div class="fk_width">
+              <div class="custom_menu-btn">
+                <button onclick="openNav()">
+                  <span class="s-1"> </span>
+                  <span class="s-2"> </span>
+                  <span class="s-3"> </span>
+                </button>
+              </div>
+              <div id="myNav" class="overlay">
+                <div class="overlay-content">
+                  <a class="" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+                  <a class="" href="{% url 'about' %}">About </a>
+                  <a class="" href="gallery.html">Gallery </a>
+                  <a class="" href="blog.html">Blog </a>
+                  <a class="" href="testimonial.html">Testimonial </a>
+                </div>
+              </div>
+            </div>
+            <a class="navbar-brand" href="{% url 'index' %}">
+              <span>
+                PixConnect
+              </span>
+            </a>
+            <div class="user_option">
+              <a href="#">
+                login
+              </a>
+              <form class="form-inline ">
+                <button class="btn  nav_search-btn" type="submit"></button>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+  
+  <div class="container" style="margin-top: 100px;margin-left: 190px;">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card p-4 shadow-lg border-0" style="background-color: rgba(255, 255, 255, 0.85);">
+                <h2 class="text-center mb-4" style="color: #5A2D96;">Login</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="username" class="form-label" style="color: #5A2D96;">Username</label>
+                        <input type="text" name="username" id="username" class="form-control" placeholder="Enter your username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label" style="color: #5A2D96;">Password</label>
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Login</button>
+                </form>
+                <div class="mt-3 text-center">
+                    <a href="{% url 'register' %}" class="text-decoration-none" style="color: #5A2D96;">Don't have an account? Register here</a>
+                </div>
+                {% if error %}
+                    <div class="mt-3 alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+  <!-- footer section -->
+  <footer class="footer_section ">
+    <div class="container">
+      <p style="text-align: center;">
+        &copy; <span id="displayYear"></span> All Rights Reserved PixConnect Team
+      </p>
+    </div>
+  </footer>
+  <!-- footer section -->
+
+  <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+</body>
+</html>
+
+
+
+
+

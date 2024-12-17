@@ -1,0 +1,167 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>About</title>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
+</head>
+
+<body class="sub_page">
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container d-block">
+          <div class="main_nav_menu">
+            <div class="fk_width">
+              <div class="custom_menu-btn" style="margin-top: -10px;">
+                <button onclick="openNav()">
+                  <span class="s-1"> </span>
+                  <span class="s-2"> </span>
+                  <span class="s-3"> </span>
+                </button>
+              </div>
+              <div id="myNav" class="overlay">
+                <div class="overlay-content">
+                  <a class="" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+                  <a class="" href="{% url 'about' %}">About </a>
+                  <a class="" href="gallery.html">Gallery </a>
+                  <a class="" href="blog.html">Blog </a>
+                  <a class="" href="testimonial.html">Testimonial </a>
+                </div>
+              </div>
+            </div>
+            <a class="navbar-brand" href="{% url 'index' %}">
+              <span>
+                PixConnect
+              </span>
+            </a>
+            <div class="user_option">
+              <a href="#">
+                login
+              </a>
+              <form class="form-inline ">
+                <button class="btn  nav_search-btn" type="submit"></button>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+  <div class="signup-container">
+    <h1>Register</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Username" required><br>
+        <input type="email" name="email" placeholder="Email" required><br>
+        <input type="password" name="password" placeholder="Password" required><br>
+        <input type="password" name="confirm_password" placeholder="Confirm Password" required><br>
+        <select name="role" required>
+            <option value="photographer">Photohrapher</option>
+            <option value="user">User</option>
+        </select><br>
+        <button type="submit">Register</button>
+    </form>
+    <div class="redirect-link">
+        <a href="{% url 'login' %}">Already have an account? Login here</a>
+    </div>
+    {% if error %}
+        <p class="error-message">{{ error }}</p>
+    {% endif %}
+</div>
+
+<style>
+.signup-container {
+max-width: 500px;
+margin-top: 20px;
+margin-left: 500px;
+padding: 30px;
+background-color: #f4f4f4;
+border-radius: 8px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+text-align: center;
+color: #333;
+margin-bottom: 20px;
+}
+
+input, select {
+width: 100%;
+padding: 12px;
+margin: 8px 0;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-size: 16px;
+}
+
+button {
+width: 100%;
+padding: 12px;
+background-color: #5A2D96;
+color: white;
+border: none;
+border-radius: 4px;
+font-size: 16px;
+cursor: pointer;
+}
+
+button:hover {
+background-color: #7B2F8C;
+}
+
+.redirect-link {
+text-align: center;
+margin-top: 20px;
+}
+
+.redirect-link a {
+color: #5A2D96;
+text-decoration: none;
+}
+
+.redirect-link a:hover {
+text-decoration: underline;
+}
+
+.error-message {
+color: red;
+text-align: center;
+margin-top: 10px;
+}
+
+</style>
+
+  <!-- footer section -->
+  <footer class="footer_section ">
+    <div class="container">
+      <p style="text-align: center;">
+        &copy; <span id="displayYear"></span> All Rights Reserved PixConnect Team
+      </p>
+    </div>
+  </footer>
+  <!-- footer section -->
+
+  <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+</body>
+</html>
+
+
+
+

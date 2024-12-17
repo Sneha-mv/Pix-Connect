@@ -1,1 +1,135 @@
-<h>admin dashboard</h>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <h1>Welcome Admin</h1>
+            <ul>
+                <li><a href="{% url 'admin_dashboard' %}">Dashboard</a></li>
+                <li><a href="{% url 'photographers_list' %}">Phographers</a></li>
+                <li><a href="">User</a></li>
+                <li><a href="">Products</a></li>
+                <li><a href="">Orders</a></li>
+                <li><a href="">Payments</a></li>
+                <li><a href="">New RationCard</a></li>
+                <li><a href="{% url 'logout' %}" class="logout-btn">Log Me Out</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <br>
+        <div class="cards">
+            <div class="card">
+                <i class="fas fa-id-card"></i>
+                <p>100+</p>
+                <span>Photographers Registered</span>
+            </div>
+            <div class="card">
+                <i class="fas fa-users"></i>
+                <p>15,000+</p>
+                <span>Images Delivered</span>
+            </div>
+            <div class="card">
+                <i class="fas fa-check-circle"></i>
+                <p>10,000+</p>
+                <span>Satisfied Clients</span>
+            </div>
+            <div class="card">
+                <i class="fas fa-times-circle"></i>
+                <p>500+</p>
+                <span>Events Covered</span>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.navbar {
+    background-color: #4A4A4A;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.navbar h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.navbar ul li {
+    margin: 0 10px;
+}
+
+.navbar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.navbar .logout-btn {
+    background-color: #ff4d4d;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+}
+
+main {
+    padding: 20px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+}
+
+.card i {
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: #4A4A4A;
+}
+
+.card p {
+    font-size: 24px;
+    margin: 5px 0;
+    color: #333;
+}
+
+.card span {
+    font-size: 14px;
+    color: #777;
+}
+
+</style>
+
+

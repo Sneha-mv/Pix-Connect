@@ -18,6 +18,8 @@ urlpatterns = [
     # Photographer Section
     path('photographer-dashboard/',views.photographer_dashboard,name='photographer_dashboard'),
     path('complete_profile_photographer/', views.complete_profile_photographer, name='complete_profile_photographer'),
+    path('add_image/', views.add_image, name='add_image'),
+    path('view_images/', views.view_images, name='view_images'),
 
     # User Section
     path('user-dashboard/',views.user_dashboard,name='user_dashboard'),

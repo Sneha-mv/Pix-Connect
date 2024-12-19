@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
-# Create your models here.
 
 # For All
 class CustomUser(AbstractUser):
@@ -30,7 +29,8 @@ class PhotomanDetails(models.Model):
 class PhotographyImages(models.Model):
     photographer = models.ForeignKey(PhotomanDetails, on_delete=models.CASCADE, related_name='working_images')
     image = models.ImageField(upload_to='working_images/')
-    spot = models.CharField(max_length=100)  
+    spot = models.CharField(max_length=100)
+    description = models.TextField(blank=True, null=True)   
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

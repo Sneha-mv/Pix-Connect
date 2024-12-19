@@ -60,6 +60,7 @@ def logout_view(request):
     logout(request)  
     return redirect('index')
 
+ 
 # Admin Section
 def admin_dashboard(request):
     return render(request,"admin_dashboard.html")
@@ -85,24 +86,16 @@ def reject_photographer(request, photographer_id):
 
 
 # Photographer Section
-from django.shortcuts import render
-from .models import PhotomanDetails
-
 def photographer_dashboard(request):
-    # Handle the case when PhotomanDetails is not found for the user
     try:
         photographer_details = PhotomanDetails.objects.get(user=request.user)
     except PhotomanDetails.DoesNotExist:
-        photographer_details = None  # Set photographer_details to None if not found
-        # Optionally, redirect the user to a profile completion page
-        # return redirect('profile_completion_url')  # Uncomment if you want to redirect
+        photographer_details = None  
     is_profile_approved = photographer_details.status == 'approved' if photographer_details else False
     return render(request, "photographer_dashboard.html", {
         'user': request.user,
         'photographer_details': photographer_details,
-        'is_profile_approved': is_profile_approved
-    })
-
+        'is_profile_approved': is_profile_approved })
 
 
 @login_required
@@ -153,3 +146,70 @@ def complete_profile_photographer(request):
 # User Section
 def user_dashboard(request):
     return render(request,"user_dashboard.html")
+
+
+
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from .models import PhotographyImages
+from django.core.files.storage import FileSystemStorage
+
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.core.files.storage import FileSystemStorage
+from .models import PhotographyImages
+
+from django.core.files.storage import FileSystemStorage
+from django.shortcuts import render, redirect
+from .models import PhotographyImages
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def add_image(request):
+    if not hasattr(request.user, 'photomandetails'):
+        return render(request, 'error.html', {'message': 'You must be a registered photographer to upload images.'})
+
+    photographer = request.user.photomandetails
+
+    if request.method == 'POST':
+        spot = request.POST.get('spot')
+        description = request.POST.get('desc')  # New description field
+        uploaded_file = request.FILES.get('image')
+
+        if spot and uploaded_file and description:  # Check if all fields are filled
+            # Save the uploaded file
+            fs = FileSystemStorage()
+            filename = fs.save(f'working_images/{uploaded_file.name}', uploaded_file)
+
+            # Create a PhotographyImages object
+            PhotographyImages.objects.create(
+                photographer=photographer,
+                image=filename,
+                spot=spot,
+                description=description  # Save the description
+            )
+            return redirect('photographer_dashboard')
+        else:
+            return render(request, 'add_image.html', {'error_message': 'Spot, image, and description are required.'})
+
+    return render(request, 'add_image.html')
+
+
+
+
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from .models import PhotographyImages
+
+@login_required
+def view_images(request):
+    # Check if the user has a `PhotomanDetails` object
+    try:
+        photographer = request.user.photomandetails  # Use the correct reverse attribute
+    except AttributeError:
+        return render(request, 'error.html', {'message': 'You do not have permission to view images.'})
+
+    # Get all images uploaded by the photographer
+    images = PhotographyImages.objects.filter(photographer=photographer)
+    return render(request, 'view_image.html', {'images': images})
+

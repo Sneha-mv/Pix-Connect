@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Image</title>
+</head>
+<body>
+    <h1>Upload a Photography Image</h1>
+
+    {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="spot">Spot:</label>
+        <input type="text" id="spot" name="spot" required>
+        <br><br>
+
+        <label for="desc">Description about the Spot:</label>
+        <textarea id="desc" name="desc" rows="4" cols="50" required></textarea>
+        <br><br>
+
+        <label for="image">Upload Image:</label>
+        <input type="file" id="image" name="image" required>
+        <br><br>
+
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>

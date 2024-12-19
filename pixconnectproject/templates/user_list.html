@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photographers List</title>
+    <title>Users List</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
@@ -53,7 +53,6 @@
             background-color: #FF5733;
             color: white;
         }
-        
         .dashboard-btn {
             background-color: #4A4A4A;
             color: white;
@@ -68,7 +67,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Photographers</h1>
+        <h1>Users</h1>
         <table>
             <thead>
                 <tr>
@@ -77,45 +76,35 @@
                     <th>Last Name</th>
                     <th>Email</th>
                     <th>Phone Number</th>
-                    <th>Place</th>
-                    <th>Aadhar</th>
-                    <th>Status</th> 
+                    <th>Adress</th> 
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                {% for photographer in photographers_list %}
+                {% for user in users %}
                 <tr>
                     <td>{{ forloop.counter }}</td>
-                    <td>{{ photographer.first_name }}</td>
-                    <td>{{ photographer.last_name }}</td>
-                    <td>{{ photographer.email }}</td>
-                    <td>{{ photographer.phone_number }}</td>
-                    <td>{{ photographer.place }}</td>
-                    <td><img src="{{ photographer.aadhar_image.url }}" alt="Aadhar" width="50"></td>
-                    <td>{{ photographer.status }}</td>
+                    <td>{{ user.first_name }}</td>
+                    <td>{{ user.last_name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.phone_number }}</td>
+                    <td>{{ user.address }}</td>
                     <td>
                         <div class="actions">
-                            <a href="{% url 'approve_photographer' photographer.id %}">
-                                <button class="btn approve-btn">Approve</button>
-                            </a>
-                            <a href="{% url 'reject_photographer' photographer.id %}">
-                                <button class="btn reject-btn">Reject</button>
-                            </a>
-                            <a href="{% url 'delete_photographer' photographer.id %}">
-                                <button class="btn reject-btn" style="background-color: #FF0000;">Delete</button>
+                            <a href="{% url 'delete_user' user.id %}">
+                                <button class="btn reject-btn">Delete</button>
                             </a>
                         </div>
                     </td>
                 </tr>
                 {% empty %}
                 <tr>
-                    <td colspan="12">No Photographers found.</td>
+                    <td colspan="12">No users found.</td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-         <a href="{% url 'admin_dashboard' %}" class="dashboard-btn">Go to Dashboard</a>
+        <a href="{% url 'admin_dashboard' %}" class="dashboard-btn">Go to Dashboard</a>
     </div>
 </body>
 </html>

@@ -1,30 +1,101 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload Image</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        textarea,
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            font-size: 14px;
+            color: red;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Upload a Photography Image</h1>
+    <div class="container">
+        <h1>Upload a Photography Image</h1>
 
-    {% if error_message %}
-        <p style="color: red;">{{ error_message }}</p>
-    {% endif %}
+        {% if error_message %}
+            <p>{{ error_message }}</p>
+        {% endif %}
 
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <label for="spot">Spot:</label>
-        <input type="text" id="spot" name="spot" required>
-        <br><br>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="spot">Spot:</label>
+            <input type="text" id="spot" name="spot" placeholder="Enter the spot name" required>
 
-        <label for="desc">Description about the Spot:</label>
-        <textarea id="desc" name="desc" rows="4" cols="50" required></textarea>
-        <br><br>
+            <label for="desc">Description about the Spot:</label>
+            <textarea id="desc" name="desc" rows="4" placeholder="Write a brief description" required></textarea>
 
-        <label for="image">Upload Image:</label>
-        <input type="file" id="image" name="image" required>
-        <br><br>
+            <label for="image">Upload Image:</label>
+            <input type="file" id="image" name="image" required>
 
-        <button type="submit">Upload</button>
-    </form>
+            <button type="submit">Upload</button>
+        </form>
+    </div>
 </body>
 </html>
+
+

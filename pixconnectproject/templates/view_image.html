@@ -1,24 +1,155 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Images</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 90%;
+            max-width: 800px;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+            text-align: center;
+        }
+
+        td {
+            color: #555;
+        }
+
+        img {
+            display: block;
+            margin: 0 auto;
+            border-radius: 5px;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        .no-images {
+            font-size: 16px;
+            color: #666;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 5px 10px;
+            font-size: 14px;
+            border-radius: 4px;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn-edit {
+            background-color: #28a745;
+            color: white;
+            border: none;
+        }
+
+        .btn-edit:hover {
+            background-color: #218838;
+        }
+
+        .btn-delete {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+        }
+
+        .btn-delete:hover {
+            background-color: #c82333;
+        }
+
+        .dashboard-btn {
+            background-color: #4A4A4A;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
     <h1>Your Uploaded Images</h1>
 
     {% if images %}
-        <ul>
-        {% for image in images %}
-            <li>
-                <img src="{{ image.image.url }}" alt="{{ image.spot }}" width="200">
-                <p>Spot: {{ image.spot }}</p>
-                <p>Description : {{ image.description }}</p>
-                <p>Uploaded At: {{ image.uploaded_at }}</p>
-            </li>
-        {% endfor %}
-        </ul>
+        <table>
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Spot</th>
+                    <th>Description</th>
+                    <th>Uploaded At</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for image in images %}
+                <tr>
+                    <td>
+                        <img src="{{ image.image.url }}" alt="{{ image.spot }}" width="100">
+                    </td>
+                    <td>{{ image.spot }}</td>
+                    <td>{{ image.description }}</td>
+                    <td>{{ image.uploaded_at }}</td>
+                    <td>
+                        <div class="action-buttons">
+                            <a href="{% url 'edit_image' image.id %}" class="btn btn-edit">Edit</a>
+                            <a href="{% url 'delete_image' image.id %}" class="btn btn-delete">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'photographer_dashboard' %}" class="dashboard-btn">Go to Dashboard</a>
     {% else %}
-        <p>No images found.</p>
+        <p class="no-images">No images found.</p>
+        <a href="{% url 'photographer_dashboard' %}" class="dashboard-btn">Go to Dashboard</a>
     {% endif %}
 </body>
 </html>
+
+

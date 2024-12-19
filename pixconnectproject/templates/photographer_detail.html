@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ photographer.first_name }} {{ photographer.last_name }} - Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Add any custom styling */
+    </style>
+</head>
+<body>
+    <main>
+        <h2>{{ photographer.first_name }} {{ photographer.last_name }}'s Photography</h2>
+        
+        <p><strong>Email:</strong> {{ photographer.email }}</p>
+        <p><strong>Phone Number:</strong> {{ photographer.phone_number }}</p>
+        <p><strong>Place:</strong> {{ photographer.place }}</p>
+        <p><strong>Status:</strong> {{ photographer.status }}</p>
+
+        <h3>Photographs</h3>
+        {% if images %}
+            <div>
+                {% for image in images %}
+                    <div>
+                        <img src="{{ image.image.url }}" alt="Image" style="width: 300px; height: auto;">
+                        <p><strong>Spot:</strong> {{ image.spot }}</p>
+                        <p><strong>Description:</strong> {{ image.description }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No images available for this photographer.</p>
+        {% endif %}
+        
+        <a href="{% url 'photographers' %}">Back to Photographer List</a>
+    </main>
+</body>
+</html>

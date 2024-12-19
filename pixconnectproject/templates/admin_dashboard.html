@@ -13,11 +13,10 @@
             <ul>
                 <li><a href="{% url 'admin_dashboard' %}">Dashboard</a></li>
                 <li><a href="{% url 'photographers_list' %}">Phographers</a></li>
-                <li><a href="">User</a></li>
-                <li><a href="">Products</a></li>
-                <li><a href="">Orders</a></li>
+                <li><a href="{% url 'admin_images_list' %}">Images</a></li>
+                <li><a href="{% url 'user_list' %}">User</a></li>
+                <li><a href="">Bookings</a></li>
                 <li><a href="">Payments</a></li>
-                <li><a href="">New RationCard</a></li>
                 <li><a href="{% url 'logout' %}" class="logout-btn">Log Me Out</a></li>
             </ul>
         </nav>

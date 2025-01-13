@@ -1,3 +1,25 @@
+def studentlogin(request):
+    if request.method == "POST":
+        email = request.POST.get("email")
+        password = request.POST.get("password")
 
+        if not email or not password:
+            messages.error(request, "Both email and password fields are required.")
+            return redirect("quizapp:studentlogin")
+        try:
+            user = User.objects.get(email=email)
+        except User.DoesNotExist:
+            messages.error(request, "Invalid email or password. Please try again.")
+            return redirect("quizapp:studentlogin")
 
-       
+        user = authenticate(request, username=user.username, password=password)
+        if user is not None:
+            auth_login(request, user)
+            if user.is_staff: 
+                return redirect('quizapp:admindashboard')
+            else:
+                return redirect('quizapp:studentdashboard')
+        else:
+            messages.error(request, "Invalid email or password. Please try again.")
+            return redirect("quizapp:studentlogin")
+    return render(request, "studentlogin.html")

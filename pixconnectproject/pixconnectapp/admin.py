@@ -7,3 +7,4 @@ admin.site.register(PhotomanDetails)
 admin.site.register(PhotographyImages)
 admin.site.register(UserProfile)
 
+

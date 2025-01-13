@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Photographer</title>
+</head>
+<body>
+    <h1>Book {{ photographer.first_name }} {{ photographer.last_name }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="event_date">Event Date:</label>
+        <input type="date" id="event_date" name="event_date" required><br><br>
+
+        <label for="event_location">Event Location:</label>
+        <input type="text" id="event_location" name="event_location" required><br><br>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" placeholder="Enter details about the event"></textarea><br><br>
+
+        <button type="submit">Submit Booking</button>
+    </form>
+</body>
+</html>

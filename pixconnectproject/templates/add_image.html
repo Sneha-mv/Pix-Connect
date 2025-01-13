@@ -81,7 +81,7 @@
             <p>{{ error_message }}</p>
         {% endif %}
 
-        <form method="POST" enctype="multipart/form-data">
+        <form method="POST" enctype="multipart/form-data"> 
             {% csrf_token %}
             <label for="spot">Spot:</label>
             <input type="text" id="spot" name="spot" placeholder="Enter the spot name" required>

@@ -3,6 +3,9 @@ from django.contrib.auth import login, authenticate,logout
 from django.contrib.auth.decorators import login_required
 from .models import CustomUser, PhotomanDetails, PhotographyImages, UserProfile
 from django.core.files.storage import FileSystemStorage
+import re
+from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash
 # Create your views here.
 
 def index(request):
@@ -17,6 +20,18 @@ def gallery(request):
     return render(request,"gallery.html")
 
 
+def is_strong_password(password):
+    if len(password) < 8:
+        return "Password must be at least 8 characters."
+    if not re.search(r'[A-Za-z]', password):
+        return "Password must contain at least one albhabet."
+    if not re.search(r'[0-9]', password):
+        return "Password must contain at least one digit."
+    if not re.search(r'[@$!%*?&#]', password):
+        return "Password must contain at least one special character."
+    return None
+
+
 def register(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -26,11 +41,18 @@ def register(request):
         role = request.POST['role']
 
         if password != confirm_password:
-            return render(request, 'register.html', {'error': 'Passwords do not match'})
-        if CustomUser.objects.filter(username=username).exists():
-            return render(request, 'register.html', {'error': 'Username already exists'})
+            messages.error(request, "Passwords do not match.")
+            return redirect('register')
         if CustomUser.objects.filter(email=email).exists():
-            return render(request, 'register.html', {'error': 'Email already exists'})
+            messages.error(request, "Email already exits.")
+            return redirect('register')
+        if CustomUser.objects.filter(username=username).exists():
+            messages.error(request, "Username already exits.")
+            return redirect('register')
+        password_error = is_strong_password(password)
+        if password_error:
+            messages.error(request, password_error)
+            return redirect('register')
 
         user = CustomUser.objects.create_user(username=username, email=email, password=password, role=role)
         user.save()
@@ -43,6 +65,15 @@ def login_view(request):
         username = request.POST['username']
         password = request.POST['password']
 
+        if not username or not password:
+            messages.error(request, "Both username and password fields are required.")
+            return redirect("login")
+        try:
+            user = CustomUser.objects.get(username=username)
+        except CustomUser.DoesNotExist:
+            messages.error(request, "Invalid username or password. Please try again.")
+            return redirect("login")
+
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
@@ -53,7 +84,8 @@ def login_view(request):
             else:
                 return redirect('user_dashboard')
         else:
-            return render(request, 'login.html', {'error': 'Invalid credentials'})
+            messages.error(request, "Invalid username or password. Please try again.")
+            return redirect("login")
     return render(request, 'login.html')
 
 
@@ -61,7 +93,34 @@ def logout_view(request):
     logout(request)  
     return redirect('index')
 
- 
+
+def forgot_password(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        new_password = request.POST.get('new_password')
+        confirm_password = request.POST.get('confirm_password')
+
+        if len(new_password) < 8:
+            messages.error(request, "Your password must be at least 8 characters long.")
+            return redirect('quizapp:forgot_password')
+        if new_password != confirm_password:
+            messages.error(request, "Passwords do not match. Please try again.")
+            return redirect('forgot_password')
+        try:
+            user = CustomUser.objects.get(email=email)
+        except CustomUser.DoesNotExist:
+            messages.error(request, "No user found with that email address.")
+            return redirect('forgot_password')
+
+        user.set_password(new_password)
+        user.save()
+        # Update session auth hash to avoid the user getting logged out
+        update_session_auth_hash(request, user)
+        messages.success(request, "Your password has been successfully updated!")
+        return redirect('login')  
+    return render(request,'forgot_password.html')  
+
+  
 # Admin Section
 def admin_dashboard(request):
     return render(request,"admin_dashboard.html")
@@ -276,7 +335,8 @@ def photographer_detail(request, id):
         'images': images, })
 
 
-
+def index1(request):
+    return render(request,"index1.html")
 
 
 

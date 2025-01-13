@@ -1,167 +1,311 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="keywords" content="" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
-  <title>About</title>
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
-  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
-  <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
-</head>
-
-<body class="sub_page">
-  <div class="hero_area">
-    <!-- header section strats -->
-    <header class="header_section">
-      <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg custom_nav-container d-block">
-          <div class="main_nav_menu">
-            <div class="fk_width">
-              <div class="custom_menu-btn" style="margin-top: -10px;">
-                <button onclick="openNav()">
-                  <span class="s-1"> </span>
-                  <span class="s-2"> </span>
-                  <span class="s-3"> </span>
-                </button>
-              </div>
-              <div id="myNav" class="overlay">
-                <div class="overlay-content">
-                  <a class="" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
-                  <a class="" href="{% url 'about' %}">About </a>
-                  <a class="" href="gallery.html">Gallery </a>
-                  <a class="" href="blog.html">Blog </a>
-                  <a class="" href="testimonial.html">Testimonial </a>
+{% block title %} 
+    Sign Up
+{% endblock %}
+{% block content %}
+<div class="log-sec1">
+   <div class="container log-sec2" id="container">
+        <div class="form-container sign-in">
+            <form action="" method="post">
+                {% csrf_token %}
+                <input type="text" placeholder="Username" name="username" style="margin-top: 10px;" required>
+                <input type="email" placeholder="Email" name="email" required>
+                <input type="password" placeholder="Password" name="password" required>
+                <input type="password" placeholder="Confirm Password" name="confirm_password" required>
+                <select name="role" required>
+                  <option value="photographer">Photohrapher</option>
+                  <option value="user">User</option>
+                </select><br>
+                <button type="submit" name="submit" style="margin-top: -2px;">Sign Up</button>
+            </form>
+            {% if messages %}
+            <div class="message-box">
+                {% for message in messages %}
+                    <div class="message {{ message.tags }}" style="margin-top: 10px;margin-left: 110px;padding-left: 10px;font-size: 13px;">{{ message|safe }}</div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-right">
+                        <h1 style="font-family: 'Times New Roman', Times, serif;font-weight: bold;">Welcome Back!</h1>
+                        <p>If you already have an account</p>
+                        <a href="{% url 'login' %}"><button>Log In</button></a>
                 </div>
-              </div>
             </div>
-            <a class="navbar-brand" href="{% url 'index' %}">
-              <span>
-                PixConnect
-              </span>
-            </a>
-            <div class="user_option">
-              <a href="#">
-                login
-              </a>
-              <form class="form-inline ">
-                <button class="btn  nav_search-btn" type="submit"></button>
-              </form>
-            </div>
-          </div>
-        </nav>
-      </div>
-    </header>
-    <!-- end header section -->
-  </div>
-
-  <div class="signup-container">
-    <h1>Register</h1>
-    <form method="post">
-        {% csrf_token %}
-        <input type="text" name="username" placeholder="Username" required><br>
-        <input type="email" name="email" placeholder="Email" required><br>
-        <input type="password" name="password" placeholder="Password" required><br>
-        <input type="password" name="confirm_password" placeholder="Confirm Password" required><br>
-        <select name="role" required>
-            <option value="photographer">Photohrapher</option>
-            <option value="user">User</option>
-        </select><br>
-        <button type="submit">Register</button>
-    </form>
-    <div class="redirect-link">
-        <a href="{% url 'login' %}">Already have an account? Login here</a>
+        </div>
     </div>
-    {% if error %}
-        <p class="error-message">{{ error }}</p>
-    {% endif %}
 </div>
 
 <style>
-.signup-container {
-max-width: 500px;
-margin-top: 20px;
-margin-left: 500px;
-padding: 30px;
-background-color: #f4f4f4;
-border-radius: 8px;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+.message-box {
+    margin-top: -490px;
+    margin-inline-start: -100px;
+    width: 630px;
 }
 
-h1 {
-text-align: center;
-color: #333;
-margin-bottom: 20px;
+.message {
+    padding: 10px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    padding-left: 130px;
+    font-weight: bold;
 }
 
-input, select {
-width: 100%;
-padding: 12px;
-margin: 8px 0;
-border: 1px solid #ccc;
-border-radius: 4px;
-font-size: 16px;
+.message.success {
+    background-color: #dff0d8;
+    color: #3c763d;          
+    border-left: 4px solid #3c763d; 
 }
 
-button {
-width: 100%;
-padding: 12px;
-background-color: #5A2D96;
-color: white;
-border: none;
-border-radius: 4px;
-font-size: 16px;
-cursor: pointer;
+.message.error {
+    background-color: #f2dede; 
+    color: #a94442;           
+    border-left: 4px solid #a94442; 
 }
 
-button:hover {
-background-color: #7B2F8C;
+.message.password-length-error {
+    background-color: #f2dede; 
+    color: #a94442;           
+    border-left: 4px solid #a94442; 
+    padding-left: 70px;
+}
+  
+  .log-sec1 {
+    height: 600px;
+    background-color: #c9d6ff;
+    background: linear-gradient(to right,#e2e2e2,#c9d6ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 87vh;
 }
 
-.redirect-link {
-text-align: center;
-margin-top: 20px;
+.log-sec2 {
+    background-color: #fff;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.35);
+    position: relative;
+    overflow: hidden;
+    width: 768px;
+    max-width: 100%;
+    min-height: 500px;
 }
 
-.redirect-link a {
-color: #5A2D96;
-text-decoration: none;
+.log-sec2 p {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+    margin: 20px 0;
 }
 
-.redirect-link a:hover {
-text-decoration: underline;
+.log-sec2 span {
+    font-size: 12px;
 }
 
-.error-message {
-color: red;
-text-align: center;
-margin-top: 10px;
+.log-sec2 a {
+    color: #333;
+    font-size: 18px;
+    text-decoration: none;
+    margin: 20px 0 10px;
 }
+
+.log-sec1 button {
+    background-color: #512da8;
+    color: #fff;
+    font-size: 15px;
+    padding: 10px 45px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 3px;
+    cursor: pointer;
+    margin-left: 30px;
+}
+
+.log-sec2 button.hidden {
+    background-color: transparent;
+    border-color: #fff;
+}
+
+.log-sec2 form {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    height: 100%;
+}
+
+.log-sec2 input {
+    background-color: #eee;
+    border: none;
+    margin: 8px 0;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 8px;
+    width: 100%;
+    outline: none;
+}
+
+.form-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+}
+
+.sign-in {
+    left: 0;
+    width: 50%;
+    z-index: 2;
+}
+
+.log-sec2.active .sign-in {
+    transform: translateX(100%);
+}
+
+.sign-up {
+    left: 0;
+    width: 50%;
+    opacity: 0;
+    z-index: 1;
+}
+
+.log-sec2.active .sign-up {
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    animation: move 0.6s;
+}
+
+@keyframes move{
+    0%, 49.99% {
+        opacity: 0;
+        z-index: 1;
+    }
+    50%, 100% {
+        opacity: 1;
+        z-index: 5;
+    }
+}
+
+.social-icons {
+    margin: 20px 0;
+}
+
+.social-icons a {
+    border: 1px solid #ccc;
+    border-radius: 20%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 3px;
+    width: 40px;
+    height: 40px;
+}
+
+.toggle-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.6s ease-in-out;
+    border-radius: 150px 0 0 100px;
+    z-index: 1000;
+}
+
+.log-sec2.active .toggle-container {
+    transform: translateX(-100%);
+    border-radius: 0 150px 100px 0;
+}
+
+.toggle {
+    background-color: #512da8;
+    height: 100%;
+    background: linear-gradient(to right,#5c6bc0,#512da8);
+    color: #fff;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+}
+
+.log-sec2.active .toggle {
+    transform: translateX(50%);
+}
+
+.toggle-panel {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 30px;
+    text-align: center;
+    top: 0;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+}
+
+.toggle-left {
+    transform: translateX(-200%);
+}
+
+.log-sec2.active .toggle-left {
+    transform: translateX(0);
+}
+
+.toggle-right {
+    right: 0;
+    transform: translateX(0);
+}
+
+.log-sec2.active .toggle-right {
+    transform: translateX(200%);
+}
+
+select {
+    background-color: #eee;
+    border: none;
+    margin: 8px 0;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 8px;
+    width: 100%;
+    outline: none;
+    color: #787676;
+    appearance: none; /* Removes default dropdown arrow for better customization */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23333' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+  }
+
+
+  option {
+    color: #605e5e;
+    font-size: 16px;
+  }
 
 </style>
 
-  <!-- footer section -->
-  <footer class="footer_section ">
-    <div class="container">
-      <p style="text-align: center;">
-        &copy; <span id="displayYear"></span> All Rights Reserved PixConnect Team
-      </p>
-    </div>
-  </footer>
-  <!-- footer section -->
-
-  <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
-  <script src="{% static 'js/bootstrap.js' %}"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-  <script src="{% static 'js/custom.js' %}"></script>
-</body>
-</html>
-
-
+{% endblock %}
 
 

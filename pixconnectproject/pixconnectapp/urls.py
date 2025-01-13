@@ -33,6 +33,5 @@ urlpatterns = [
     path('user-dashboard/',views.user_dashboard,name='user_dashboard'),
     path('photographers/', views.photographers_view, name='photographers'),
     path('photographer-detail/<int:id>/', views.photographer_detail, name='photographer_detail'),
-    
-    path('index1/',views.index1,name='index1'),
+
 ]  

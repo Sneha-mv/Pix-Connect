@@ -335,8 +335,6 @@ def photographer_detail(request, id):
         'images': images, })
 
 
-def index1(request):
-    return render(request,"index1.html")
 
 
 

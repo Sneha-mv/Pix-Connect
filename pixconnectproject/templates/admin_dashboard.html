@@ -129,7 +129,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link " href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
                   aria-expanded="false">
-                  <img src="{% static 'admindash/assets/images/profile/user-1.jpg' %}" alt="" width="35" height="35" class="rounded-circle">
+                  <img src="{% static 'admindash/assets/images/profile/adminprofile.jpg' %}" alt="" width="40" height="40" class="rounded-circle" style="margin-left: -40px;">
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                   <div class="message-body">
@@ -138,18 +138,13 @@
                       <p class="mb-0 fs-3">My Profile</p>
                     </a>
                     <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                      <i class="ti ti-mail fs-6"></i>
-                      <p class="mb-0 fs-3">My Account</p>
+                      <i class="ti ti-user fs-6"></i>
+                      <p class="mb-0 fs-3">Update Profile</p>
                     </a>
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                      <i class="ti ti-list-check fs-6"></i>
-                      <p class="mb-0 fs-3">My Task</p>
-                    </a>
-                    <a href="./authentication-login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                   </div>
                 </div>
               </li>
-              <a href="{% url 'logout' %}" style="background-color: #ff4d4d;padding: 5px 10px;border-radius: 5px;color: white;">Logout</a>
+              <a href="{% url 'logout' %}" style="background-color: #ff4d4d;padding: 7px 12px;border-radius: 5px;color: white;">Logout</a>
             </ul>
           </div>
         </nav>
@@ -164,14 +159,14 @@
                 <div class="card-body">
                   <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
                     <div class="mb-3 mb-sm-0">
-                      <h5 class="card-title fw-semibold">Sales Profit</h5>
+                      <h5 class="card-title fw-semibold">Photography Profit</h5>
                     </div>
                     <div>
                       <select class="form-select">
-                        <option value="1">March 2024</option>
-                        <option value="2">April 2024</option>
-                        <option value="3">May 2024</option>
-                        <option value="4">June 2024</option>
+                        <option value="1">October 2024</option>
+                        <option value="2">November 2024</option>
+                        <option value="3">December 2024</option>
+                        <option value="4">January 2025</option>
                       </select>
                     </div>
                   </div>
@@ -194,26 +189,6 @@
                           <h6 class="mb-0 fs-4 fw-medium text-muted">
                             Total followers
                           </h6>
-                        </div>
-                        <div class="dropdown dropstart">
-                          <a href="javascript:void(0)" class="text-muted" id="dropdownMenuButton"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="ti ti-dots-vertical fs-6"></i>
-                          </a>
-                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <li>
-                              <a class="dropdown-item d-flex align-items-center gap-3" href="javascript:void(0)"><i
-                                  class="fs-4 ti ti-plus"></i>Add</a>
-                            </li>
-                            <li>
-                              <a class="dropdown-item d-flex align-items-center gap-3" href="javascript:void(0)"><i
-                                  class="fs-4 ti ti-edit"></i>Edit</a>
-                            </li>
-                            <li>
-                              <a class="dropdown-item d-flex align-items-center gap-3" href="javascript:void(0)"><i
-                                  class="fs-4 ti ti-trash"></i>Delete</a>
-                            </li>
-                          </ul>
                         </div>
                       </div>
                       <div class="row align-items-end justify-content-between">
@@ -239,33 +214,13 @@
                             <iconify-icon icon="solar:wallet-2-line-duotone" class="fs-7 text-white"></iconify-icon>
                           </div>
                           <h6 class="mb-0 fs-4 fw-medium text-muted">
-                            Total Income
+                            Events Covered
                           </h6>
-                        </div>
-                        <div class="dropdown dropstart">
-                          <a href="javascript:void(0)" class="text-muted" id="dropdownMenuButton"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="ti ti-dots-vertical fs-6"></i>
-                          </a>
-                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <li>
-                              <a class="dropdown-item d-flex align-items-center gap-3" href="javascript:void(0)"><i
-                                  class="fs-4 ti ti-plus"></i>Add</a>
-                            </li>
-                            <li>
-                              <a class="dropdown-item d-flex align-items-center gap-3" href="javascript:void(0)"><i
-                                  class="fs-4 ti ti-edit"></i>Edit</a>
-                            </li>
-                            <li>
-                              <a class="dropdown-item d-flex align-items-center gap-3" href="javascript:void(0)"><i
-                                  class="fs-4 ti ti-trash"></i>Delete</a>
-                            </li>
-                          </ul>
                         </div>
                       </div>
                       <div class="row align-items-center justify-content-between pt-4">
                         <div class="col-5">
-                          <h2 class="mb-6 fs-8 text-nowrap">$6,280</h2>
+                          <h2 class="mb-6 fs-8 text-nowrap">500+</h2>
                           <span class="badge rounded-pill border border-muted fw-bold text-muted fs-2 py-1">+18% last
                             month</span>
                         </div>
@@ -283,15 +238,15 @@
             <div class="col-lg-8 d-flex align-items-stretch">
               <div class="card w-100 overflow-hidden">
                 <div class="card-body pb-0">
-                  <h4 class="fs-4 mb-1 card-title">Popular Products</h4>
-                  <p class="mb-0 card-subtitle">Total 9k Visitors</p>
+                  <h4 class="fs-4 mb-1 card-title">Popular Photographers</h4>
+                  <p class="mb-0 card-subtitle">Total 5k Visitors</p>
                 </div>
                 <div data-simplebar class="position-relative">
                   <div class="table-responsive products-tabel" data-simplebar>
                     <table class="table text-nowrap mb-0 align-middle table-hover">
                       <thead class="fs-4">
                         <tr>
-                          <th class="fs-3 px-4">Products</th>
+                          <th class="fs-3 px-4">Photographer</th>
                           <th class="fs-3">Payment</th>
                           <th class="fs-3">Status</th>
                           <th class="fs-3"></th>
@@ -301,11 +256,11 @@
                         <tr>
                           <td>
                             <div class="d-flex align-items-center product">
-                              <img src="{% static 'admindash/assets/images/products/s1.jpg' %}" class="img-fluid flex-shrink-0 rounded"
+                              <img src="{% static 'images/taj.jpg' %}" class="img-fluid flex-shrink-0 rounded"
                                 width="60" height="60" />
                               <div class="ms-3 product-title">
                                 <h6 class="fs-3 mb-0 text-truncate-2">
-                                  iPhone 13 pro max-Pacific Blue-128GB storage
+                                  Arjun MV 
                                 </h6>
                               </div>
                             </div>
@@ -350,11 +305,11 @@
                         <tr>
                           <td>
                             <div class="d-flex align-items-center product">
-                              <img src="{% static 'admindash/assets/images/products/s2.jpg' %}" class="img-fluid flex-shrink-0 rounded"
+                              <img src="{% static 'images/kariyathumpara.jpg' %}" class="img-fluid flex-shrink-0 rounded"
                                 width="60" height="60" />
                               <div class="ms-3 product-title">
                                 <h6 class="fs-3 mb-0 text-truncate-2">
-                                  Apple MacBook Pro 13 inch-M1-8/256GB-space
+                                  Sheeba K
                                 </h6>
                               </div>
                             </div>
@@ -399,11 +354,11 @@
                         <tr>
                           <td>
                             <div class="d-flex align-items-center product">
-                              <img src="{% static 'admindash/assets/images/products/s3.jpg' %}" class="img-fluid flex-shrink-0 rounded"
+                              <img src="{% static 'images/kuttanad.jpg' %}" class="img-fluid flex-shrink-0 rounded"
                                 width="60" height="60" />
                               <div class="ms-3 product-title">
                                 <h6 class="fs-3 mb-0 text-truncate-2">
-                                  PlayStation 5 DualSense Wireless Controller
+                                  Anu Mol UK
                                 </h6>
                               </div>
                             </div>
@@ -448,12 +403,11 @@
                         <tr>
                           <td>
                             <div class="d-flex align-items-center product">
-                              <img src="{% static 'admindash/assets/images/products/s5.jpg' %}" class="img-fluid flex-shrink-0 rounded"
+                              <img src="{% static 'images/goa.jpg' %}" class="img-fluid flex-shrink-0 rounded"
                                 width="60" height="60" />
                               <div class="ms-3 product-title">
                                 <h6 class="fs-3 mb-0 text-truncate-2">
-                                  Amazon Basics Mesh, Mid-Back, Swivel Office
-                                  De...
+                                  Arun CV
                                 </h6>
                               </div>
                             </div>
@@ -614,113 +568,10 @@
                         class="badge rounded-pill fw-medium fs-2 d-flex align-items-center bg-success-subtle text-success text-end"><i
                           class="ti ti-caret-up"></i>9.25%</span>
                     </li>
-                    <a href="javascript:void(0)" class="fs-4 mt-7 text-center d-block">View more markets</a>
                   </ul>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-4">
-              <div class="card overflow-hidden hover-img">
-                <div class="position-relative">
-                  <a href="javascript:void(0)">
-                    <img src="{% static 'admindash/assets/images/blog/blog-img1.jpg' %}" class="card-img-top" alt="materialM-img">
-                  </a>
-                  <span
-                    class="badge text-bg-light text-dark fs-2 lh-sm mb-9 me-9 py-1 px-2 fw-semibold position-absolute bottom-0 end-0">2
-                    min Read</span>
-                  <img src="{% static 'admindash/assets/images/profile/user-3.jpg' %}" alt="materialM-img"
-                    class="img-fluid rounded-circle position-absolute bottom-0 start-0 mb-n9 ms-9" width="40"
-                    height="40" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Georgeanna Ramero">
-                </div>
-                <div class="card-body p-4">
-                  <span class="badge text-bg-light fs-2 py-1 px-2 lh-sm  mt-3">Social</span>
-                  <a class="d-block my-4 fs-5 text-dark fw-semibold link-primary" href="">As yen tumbles, gadget-loving
-                    Japan goes
-                    for secondhand iPhones</a>
-                  <div class="d-flex align-items-center gap-4">
-                    <div class="d-flex align-items-center gap-2">
-                      <i class="ti ti-eye text-dark fs-5"></i>9,125
-                    </div>
-                    <div class="d-flex align-items-center gap-2">
-                      <i class="ti ti-message-2 text-dark fs-5"></i>3
-                    </div>
-                    <div class="d-flex align-items-center fs-2 ms-auto">
-                      <i class="ti ti-point text-dark"></i>Mon, Dec 19
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="card overflow-hidden hover-img">
-                <div class="position-relative">
-                  <a href="javascript:void(0)">
-                    <img src="{% static 'admindash/assets/images/blog/blog-img2.jpg' %}" class="card-img-top" alt="materialM-img">
-                  </a>
-                  <span
-                    class="badge text-bg-light text-dark fs-2 lh-sm mb-9 me-9 py-1 px-2 fw-semibold position-absolute bottom-0 end-0">2
-                    min Read</span>
-                  <img src="{% static 'admindash/assets/images/profile/user-2.jpg' %}" alt="materialM-img"
-                    class="img-fluid rounded-circle position-absolute bottom-0 start-0 mb-n9 ms-9" width="40"
-                    height="40" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Georgeanna Ramero">
-                </div>
-                <div class="card-body p-4">
-                  <span class="badge text-bg-light fs-2 py-1 px-2 lh-sm  mt-3">Gadget</span>
-                  <a class="d-block my-4 fs-5 text-dark fw-semibold link-primary" href="">Intel loses bid to revive
-                    antitrust case
-                    against patent foe Fortress</a>
-                  <div class="d-flex align-items-center gap-4">
-                    <div class="d-flex align-items-center gap-2">
-                      <i class="ti ti-eye text-dark fs-5"></i>4,150
-                    </div>
-                    <div class="d-flex align-items-center gap-2">
-                      <i class="ti ti-message-2 text-dark fs-5"></i>38
-                    </div>
-                    <div class="d-flex align-items-center fs-2 ms-auto">
-                      <i class="ti ti-point text-dark"></i>Sun, Dec 18
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="card overflow-hidden hover-img">
-                <div class="position-relative">
-                  <a href="javascript:void(0)">
-                    <img src="{% static 'admindash/assets/images/blog/blog-img3.jpg' %}" class="card-img-top" alt="materialM-img">
-                  </a>
-                  <span
-                    class="badge text-bg-light text-dark fs-2 lh-sm mb-9 me-9 py-1 px-2 fw-semibold position-absolute bottom-0 end-0">2
-                    min Read</span>
-                  <img src="{% static 'admindash/assets/images/profile/user-3.jpg' %}" alt="materialM-img"
-                    class="img-fluid rounded-circle position-absolute bottom-0 start-0 mb-n9 ms-9" width="40"
-                    height="40" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Georgeanna Ramero">
-                </div>
-                <div class="card-body p-4">
-                  <span class="badge text-bg-light fs-2 py-1 px-2 lh-sm  mt-3">Health</span>
-                  <a class="d-block my-4 fs-5 text-dark fw-semibold link-primary" href="">COVID outbreak deepens as more
-                    lockdowns
-                    loom in China</a>
-                  <div class="d-flex align-items-center gap-4">
-                    <div class="d-flex align-items-center gap-2">
-                      <i class="ti ti-eye text-dark fs-5"></i>9,480
-                    </div>
-                    <div class="d-flex align-items-center gap-2">
-                      <i class="ti ti-message-2 text-dark fs-5"></i>12
-                    </div>
-                    <div class="d-flex align-items-center fs-2 ms-auto">
-                      <i class="ti ti-point text-dark"></i>Sat, Dec 17
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="py-6 px-6 text-center">
-            <p class="mb-0 fs-4">Design and Developed by <a href="https://www.wrappixel.com/" target="_blank"
-                class="pe-1 text-primary text-decoration-underline">Wrappixel.com</a></p>
           </div>
         </div>
       </div>
@@ -736,5 +587,6 @@
   <!-- solar icons -->
   <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
 </body>
-
 </html>
+
+

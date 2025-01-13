@@ -102,7 +102,7 @@ def forgot_password(request):
 
         if len(new_password) < 8:
             messages.error(request, "Your password must be at least 8 characters long.")
-            return redirect('quizapp:forgot_password')
+            return redirect('forgot_password')
         if new_password != confirm_password:
             messages.error(request, "Passwords do not match. Please try again.")
             return redirect('forgot_password')

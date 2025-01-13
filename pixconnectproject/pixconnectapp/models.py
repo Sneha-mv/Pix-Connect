@@ -43,7 +43,7 @@ class UserProfile(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField()
-    phone_number = models.CharField(max_length=15, blank=True, null=False, default='0000000000')
+    phone_number = models.CharField(max_length=15, blank=True, null=False)
     address = models.TextField()
 
     def __str__(self):
